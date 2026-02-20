@@ -1,0 +1,63 @@
+/* ── Heatmap Card ── */
+.heatmap-card {
+    animation: slide-in-up 0.6s ease-out;
+}
+
+/* CRITICAL: Leaflet needs explicit height */
+.heatmap-container {
+    height: 380px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.heatmap-legend {
+    display: flex;
+    gap: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* Leaflet Popup Override */
+.popup-content {
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+}
+
+.popup-content h4 {
+    font-size: 0.9rem;
+    margin: 0 0 8px;
+    color: #1a1a2e;
+    font-weight: 700;
+}
+
+.popup-content p {
+    margin: 3px 0;
+    font-size: 0.78rem;
+    color: #333;
+}
+
+.popup-content strong {
+    color: #111;
+}
+
+/* Fix leaflet dark theme conflict */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px !important;
+}
+
+.leaflet-container {
+    background: #0f172a !important;
+}

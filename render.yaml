@@ -1,0 +1,47 @@
+services:
+  # -----------------------------------------------------------------
+  # 1. Backend API (Django)
+  # -----------------------------------------------------------------
+  - type: web
+    name: sentinell-backend
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: "cd backend && ./build.sh"
+    startCommand: "cd backend && gunicorn sentinell_backend.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sentinell-db
+          property: connectionString
+
+  # -----------------------------------------------------------------
+  # 2. Frontend App (Vite)
+  # -----------------------------------------------------------------
+  - type: web
+    name: sentinell-frontend
+    env: static
+    region: singapore
+    plan: free
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "./dist"
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: sentinell-backend
+          property: url
+
+databases:
+  # -----------------------------------------------------------------
+  # 3. PostgreSQL Database
+  # -----------------------------------------------------------------
+  - name: sentinell-db
+    databaseName: sentinell
+    user: sentinell
+    plan: free
+    region: singapore

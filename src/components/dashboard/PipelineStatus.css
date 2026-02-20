@@ -1,0 +1,188 @@
+/* ── AI Pipeline Status ── */
+.pipeline-card {
+    animation: slide-in-up 0.8s ease-out;
+}
+
+.pipeline-flow {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 0;
+}
+
+.pipeline-stage-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.pipeline-stage {
+    display: flex;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    min-width: 200px;
+    transition: all var(--transition-base);
+}
+
+.pipeline-stage:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+}
+
+.pipeline-stage.status-running {
+    border-color: var(--accent-cyan);
+    box-shadow: var(--shadow-glow-cyan);
+    animation: border-pulse 2s ease-in-out infinite;
+}
+
+.pipeline-stage.status-completed {
+    border-color: var(--status-success);
+}
+
+/* Icon */
+.stage-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    background: var(--accent-cyan-dim);
+    color: var(--accent-cyan);
+}
+
+.status-completed .stage-icon {
+    background: var(--status-success-dim);
+    color: var(--status-success);
+}
+
+.stage-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-cyan);
+    border-top-color: transparent;
+    animation: spin-slow 1.5s linear infinite;
+}
+
+/* Info */
+.stage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.stage-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.stage-desc {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.stage-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.stage-stats .stat {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.stage-stats .stat strong {
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.status-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: var(--radius-full);
+}
+
+.status-badge.status-running {
+    color: var(--accent-cyan);
+    background: var(--accent-cyan-dim);
+}
+
+.status-badge.status-completed {
+    color: var(--status-success);
+    background: var(--status-success-dim);
+}
+
+/* Arrow connector */
+.pipeline-arrow {
+    padding: 0 10px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+}
+
+/* Summary bar */
+.pipeline-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 8px;
+}
+
+.summary-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.summary-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent-cyan);
+}
+
+.summary-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .pipeline-flow {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pipeline-arrow {
+        transform: rotate(90deg);
+        padding: 4px 0;
+    }
+
+    .pipeline-stage {
+        min-width: unset;
+    }
+
+    .pipeline-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

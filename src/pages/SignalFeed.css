@@ -1,0 +1,182 @@
+/* ── Signal Feed ── */
+
+.signal-live-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+}
+
+.signal-live-bar.flash {
+    border-color: var(--accent-cyan);
+    box-shadow: var(--shadow-glow-cyan);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--status-success);
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+    animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.signal-count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent-cyan);
+}
+
+/* ── Filters ── */
+.signal-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 500;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--border-medium);
+}
+
+.filter-btn.active {
+    background: var(--accent-cyan-dim);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+/* ── Signal Grid ── */
+.signal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 16px;
+}
+
+.signal-card {
+    animation: slide-in-up 0.5s ease-out both;
+}
+
+.signal-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.source-twitter {
+    background: rgba(29, 161, 242, 0.15);
+    color: #1da1f2;
+}
+
+.source-news {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.source-pharmacy {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.source-reddit {
+    background: rgba(255, 69, 0, 0.15);
+    color: #ff4500;
+}
+
+.source-google_trends {
+    background: rgba(66, 133, 244, 0.15);
+    color: #4285f4;
+}
+
+.signal-sentiment {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: capitalize;
+}
+
+.signal-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.signal-symptoms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.signal-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.signal-location,
+.signal-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.signal-confidence {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.confidence-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .signal-grid {
+        grid-template-columns: 1fr;
+    }
+}
