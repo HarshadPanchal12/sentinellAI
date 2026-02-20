@@ -25,16 +25,12 @@ services:
   - type: web
     name: sentinell-frontend
     env: static
-    region: singapore
     plan: free
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: sentinell-backend
-          property: url
+        sync: false  # Set this manually after backend deploys, e.g. https://sentinell-backend.onrender.com
 
 databases:
   # -----------------------------------------------------------------
